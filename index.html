@@ -19,7 +19,7 @@
                 <label class="settings__label">
                     <span class="settings__title">Radius</span>
                     <input type="text" name="radius-count" class="settings__radius-count" readonly>
-                    <input type="range" name="radius" class="settings__radius">
+                    <input type="range" name="radius" class="settings__radius" min="150" max="300">
                 </label>
                 
                 <label class="settings__label">
@@ -30,8 +30,29 @@
 
                 <label class="settings__label">
                     <span class="settings__title">Amplitude</span>
-                    <input type="text" name="amplitude-count" class="settings__amplitude-count"  readonly>
-                    <input type="range" name="amplitude" class="settings__amplitude" min="1" max="10">
+                    <input type="text" name="amplitude-count" class="settings__amplitude-count" readonly>
+                    <input type="range" name="amplitude" class="settings__amplitude" min="0" max="50">
+                </label>
+
+                <label class="settings__label">
+                    <span class="settings__title">Points</span>
+                    <input type="text" name="points-count" class="settings__points-count" readonly>
+                    <input type="range" name="points" class="settings__points" min="3" max="500">
+                </label>
+
+                <label class="settings__label">
+                    <span class="settings__title">Stroke</span>
+                    <input type="checkbox" name="stroke" class="settings__stroke" checked>
+                </label>
+
+                <label class="settings__label">
+                    <span class="settings__title">Fill</span>
+                    <input type="checkbox" name="fill" class="settings__fill" checked>
+                </label>
+
+                <label class="settings__label">
+                    <span class="settings__title">HSL</span>
+                    <input type="checkbox" name="hsl" class="settings__hsl">
                 </label>
             </div>
         </div>

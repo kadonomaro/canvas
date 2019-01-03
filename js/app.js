@@ -2,28 +2,30 @@ window.onload = function () {
     let canvas = document.getElementById('canvas');
     let ctx = canvas.getContext('2d');
 
-    let NUM = 300;
-    let radius = 200;
+
+
     let centerX = 400;
     let centerY = 400;
     let varRadius, teta, x, y;
 
     let settings = {
-        radius: 100,
+        radius: 200,
         period: 15,
-        amp: 3
-
+        amp: 10,
+        points: 300,
+        stroke: true,
+        fill: true,
+        hsl: false
     }
 
     function DrawCircle(radius, color, offset) {
         ctx.fillStyle = color;
         ctx.beginPath();
-        for (let i = 0; i <= NUM; i++) {
-            varRadius = radius + settings.amp * Math.sin(teta*settings.period + offset);
-            teta = i * 2 * Math.PI / NUM;
-            x = centerX +  varRadius * Math.cos(teta);
+        for (let i = 0; i <= settings.points; i++) {
+            teta = i * 2 * Math.PI / settings.points;
+            varRadius = radius + settings.amp * Math.sin(teta * settings.period + offset);
+            x = centerX + varRadius * Math.cos(teta);
             y = centerY + varRadius * Math.sin(teta);
-            // ctx.fillRect(x, y, 2, 2);  
 
             if (i === 0) {
                 ctx.moveTo(x, y);
@@ -31,9 +33,23 @@ window.onload = function () {
                 ctx.lineTo(x, y);
             }
     }
+        
         ctx.closePath();
-        // ctx.stroke
-        ctx.fill();
+        let stroke, fill;
+
+        if (settings.stroke) {
+            stroke = ctx.stroke();
+        } else {
+            stroke = null;
+        }
+
+        if (settings.fill) {
+            fill = ctx.fill();
+        } else {
+            fill = null;
+        }
+
+
     }
 
 
@@ -43,9 +59,16 @@ window.onload = function () {
     function Draw() {
         time++;
         ctx.clearRect(0, 0, 800, 800);
-        for (let i = 0; i < 20; i++) {
-            let color = (i % 2) ? 'black' : 'white';
-            DrawCircle(200 - i * 10, color, i * time/100);
+        for (let i = 0; i <= 20; i++) {
+            let color;
+            let colorHSL = 'hsl('+ i * 20 +',50%,50%)'
+            if (settings.hsl) {
+                color = colorHSL;
+            } else {
+                color = (i % 2) ? 'black' : 'white';
+            }
+            
+            DrawCircle(settings.radius - i * 10, color, i * time / 100);
         }
         
     }
@@ -60,10 +83,15 @@ window.onload = function () {
     let sliderRadius = document.querySelector('.settings__radius');
     let sliderPeriod = document.querySelector('.settings__period');
     let sliderAmp = document.querySelector('.settings__amplitude');
+    let sliderPoints = document.querySelector('.settings__points');
+    let checkStroke = document.querySelector('.settings__stroke');
+    let checkFill = document.querySelector('.settings__fill');
+    let checkHSL = document.querySelector('.settings__hsl');
 
     let countRadius = document.querySelector('.settings__radius-count');
     let countPeriod = document.querySelector('.settings__period-count');
     let countAmp = document.querySelector('.settings__amplitude-count');
+    let countPoints = document.querySelector('.settings__points-count');
 
 
     sliderRadius.addEventListener('input', function () {
@@ -79,6 +107,24 @@ window.onload = function () {
     sliderAmp.addEventListener('input', function () {
         countAmp.value = sliderAmp.value;
         settings.amp = sliderAmp.value;
+    });
+
+    sliderPoints.addEventListener('input', function () {
+        countPoints.value = sliderPoints.value;
+        settings.points = sliderPoints.value;
+    });
+
+    checkStroke.addEventListener('click', function () {
+        settings.stroke = !settings.stroke;
+        console.log(settings.stroke);
+    });
+    checkFill.addEventListener('click', function () {
+        settings.fill = !settings.fill;
+        console.log(settings.fill);
+    });
+    checkHSL.addEventListener('click', function () {
+        settings.hsl = !settings.hsl;
+        console.log(settings.hsl);
     });
     
 
