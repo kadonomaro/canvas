@@ -13,7 +13,29 @@
 
     <div class="container">
 
-        <canvas class="canvas" id="canvas" width="800" height="800"></canvas>
+        <div class="canvas-wrap">
+            <canvas class="canvas" id="canvas" width="800" height="800"></canvas>
+            <div class="settings">
+                <label class="settings__label">
+                    <span class="settings__title">Radius</span>
+                    <input type="text" name="radius-count" class="settings__radius-count" readonly>
+                    <input type="range" name="radius" class="settings__radius">
+                </label>
+                
+                <label class="settings__label">
+                    <span class="settings__title">Period</span>
+                    <input type="text" name="period-count" class="settings__period-count" readonly>
+                    <input type="range" name="period" class="settings__period">
+                </label>
+
+                <label class="settings__label">
+                    <span class="settings__title">Amplitude</span>
+                    <input type="text" name="amplitude-count" class="settings__amplitude-count" readonly>
+                    <input type="range" name="amplitude" class="settings__amplitude">
+                </label>
+            </div>
+        </div>
+            
 
     </div>
 
