@@ -35,7 +35,14 @@
 }
 
 .settings__label {
-  display: block;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
 }
 
 .settings__title {
@@ -47,10 +54,13 @@
 .settings input[type=text] {
   width: 30%;
   padding: 3px 6px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 .settings input[type=range] {
   width: 100%;
   margin: 0;
+  margin-bottom: 5px;
 }
 /*# sourceMappingURL=style.css.map */

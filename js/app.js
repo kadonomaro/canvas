@@ -56,4 +56,31 @@ window.onload = function () {
     Render();
 
 
+
+    let sliderRadius = document.querySelector('.settings__radius');
+    let sliderPeriod = document.querySelector('.settings__period');
+    let sliderAmp = document.querySelector('.settings__amplitude');
+
+    let countRadius = document.querySelector('.settings__radius-count');
+    let countPeriod = document.querySelector('.settings__period-count');
+    let countAmp = document.querySelector('.settings__amplitude-count');
+
+
+    sliderRadius.addEventListener('input', function () {
+        countRadius.value = sliderRadius.value;
+        settings.radius = sliderRadius.value;
+    });
+
+    sliderPeriod.addEventListener('input', function () {
+        countPeriod.value = sliderPeriod.value;
+        settings.period = sliderPeriod.value;
+    });
+
+    sliderAmp.addEventListener('input', function () {
+        countAmp.value = sliderAmp.value;
+        settings.amp = sliderAmp.value;
+    });
+    
+
+
 }
